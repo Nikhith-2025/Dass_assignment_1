@@ -194,6 +194,10 @@ exports.removeOrganizer = async (req, res) => {
       }
 
       await Event.deleteMany({ organizer: organizerId });
+
+      const PasswordResetRequest = require("../models/passwordResetRequest");
+      await PasswordResetRequest.deleteMany({ organizer: organizerId });
+
       await OrganizerProfile.findByIdAndDelete(organizerId);
       await User.findByIdAndDelete(organizer.user);
 
