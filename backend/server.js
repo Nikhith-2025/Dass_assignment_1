@@ -105,9 +105,13 @@ server.listen(PORT, () => {
         );
       }
 
-      // Clean up orphaned registrations (event was deleted)
       const allEventIds = await Event.distinct("_id");
       await Registration.deleteMany({ event: { $nin: allEventIds } });
+
+      const OrganizerProfile = require("./models/organizer");
+      const PasswordResetRequest = require("./models/passwordResetRequest");
+      const allOrgIds = await OrganizerProfile.distinct("_id");
+      await PasswordResetRequest.deleteMany({ organizer: { $nin: allOrgIds } });
     } catch (err) {
       console.error("Stale registration sync error:", err.message);
     }
