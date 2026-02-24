@@ -140,9 +140,9 @@ exports.registerForEvent = async (req, res) => {
       </div>
     `;
     const qrBase64 = qrCode.replace(/^data:image\/png;base64,/, '');
-    await sendEmail(user.email, `Registration Confirmed: ${event.name}`, emailHtml, [
+    sendEmail(user.email, `Registration Confirmed: ${event.name}`, emailHtml, [
       { filename: 'qrcode.png', content: Buffer.from(qrBase64, 'base64'), cid: 'qrcode' }
-    ]);
+    ]).catch(err => console.warn("Email failed:", err.message));
 
     await registration.populate("event participant");
 
@@ -364,9 +364,9 @@ exports.approvePayment = async (req, res) => {
     `;
 
     const qrBase64 = qrCode.replace(/^data:image\/png;base64,/, '');
-    await sendEmail(user.email, `Payment Approved: ${event.name}`, emailHtml, [
+    sendEmail(user.email, `Payment Approved: ${event.name}`, emailHtml, [
       { filename: 'qrcode.png', content: Buffer.from(qrBase64, 'base64'), cid: 'qrcode' }
-    ]);
+    ]).catch(err => console.warn("Email failed:", err.message));
 
     res.json({ message: "Payment approved successfully", registration });
   } catch (error) {
@@ -402,7 +402,7 @@ exports.rejectPayment = async (req, res) => {
 
     const user = registration.participant;
     const event = registration.event;
-    await sendEmail(user.email, `Payment Rejected: ${event.name}`,
+    sendEmail(user.email, `Payment Rejected: ${event.name}`,
       `<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 520px; margin: 0 auto; background: #f8f8f8; padding: 24px;">
         <div style="background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
           <div style="background: #d9683a; padding: 28px 24px; text-align: center;">
@@ -416,7 +416,7 @@ exports.rejectPayment = async (req, res) => {
           </div>
         </div>
       </div>`
-    );
+    ).catch(err => console.warn("Email failed:", err.message));
 
     res.json({ message: "Payment rejected", registration });
   } catch (error) {
@@ -753,7 +753,7 @@ exports.cancelRegistration = async (req, res) => {
             </div>
           </div>
         </div>`
-      );
+      ).catch(err => console.warn("Email failed:", err.message));
     }
 
     res.json({ message: "Registration cancelled successfully", registration });

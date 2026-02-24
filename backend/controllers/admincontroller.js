@@ -304,14 +304,14 @@ exports.approvePasswordReset = async (req, res) => {
 
     const contactEmail = resetRequest.organizer.contactEmail;
     if (contactEmail) {
-      await sendEmail(contactEmail, "Password Reset Approved - Felicity",
+      sendEmail(contactEmail, "Password Reset Approved - Felicity",
         `<h2>Password Reset Approved</h2>
          <p>Your password reset request has been approved.</p>
          <p><strong>Login Email:</strong> ${resetRequest.user.email}</p>
          <p><strong>New Password:</strong> ${newPassword}</p>
          <p>Please login and change your password immediately.</p>
          ${comment ? `<p><strong>Admin Note:</strong> ${comment}</p>` : ''}`
-      );
+      ).catch(err => console.warn("Email failed:", err.message));
     }
 
     res.json({
@@ -352,12 +352,12 @@ exports.rejectPasswordReset = async (req, res) => {
 
     const contactEmail = resetRequest.organizer.contactEmail;
     if (contactEmail) {
-      await sendEmail(contactEmail, "Password Reset Request Rejected - Felicity",
+      sendEmail(contactEmail, "Password Reset Request Rejected - Felicity",
         `<h2>Password Reset Rejected</h2>
          <p>Your password reset request has been rejected.</p>
          ${comment ? `<p><strong>Reason:</strong> ${comment}</p>` : ''}
          <p>Please contact the admin for more information.</p>`
-      );
+      ).catch(err => console.warn("Email failed:", err.message));
     }
 
     res.json({ message: "Password reset request rejected" });
