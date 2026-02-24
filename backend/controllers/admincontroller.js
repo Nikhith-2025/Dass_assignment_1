@@ -113,17 +113,13 @@ exports.createOrganizer = async (req, res) => {
     session.endSession();
 
 
-    try {
-      await sendEmail(contactEmail, "Organizer Credentials - Felicity",
-        `<h2>Welcome to Felicity!</h2>
+    sendEmail(contactEmail, "Organizer Credentials - Felicity",
+      `<h2>Welcome to Felicity!</h2>
          <p>Your organizer account has been created successfully.</p>
          <p><strong>Email:</strong> ${generatedEmail}</p>
          <p><strong>Password:</strong> ${rawPassword}</p>
          <p>Please use these credentials to login to your organizer account.</p>`
-      );
-    } catch (emailError) {
-      console.warn("Email failed but organizer created:", emailError.message);
-    }
+    ).catch(err => console.warn("Email failed but organizer created:", err.message));
 
     res.status(201).json({
       message: "Organizer created successfully",
