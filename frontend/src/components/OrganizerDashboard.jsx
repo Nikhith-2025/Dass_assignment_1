@@ -332,8 +332,13 @@ function OrganizerDashboard({ onNavigate, onEventClick }) {
 
                         <div className="info-item">
                           <div>
-                            <span className="info-label">Registrations</span>
-                            <span className="info-value registration-count">{event.registrationCount || 0} / {event.registrationLimit}</span>
+                            <span className="info-label">{event.type === 'MERCHANDISE' ? 'Orders' : 'Registrations'}</span>
+                            <span className="info-value registration-count">
+                              {event.type === 'MERCHANDISE'
+                                ? (event.registrationCount || 0)
+                                : `${event.registrationCount || 0} / ${event.registrationLimit}`
+                              }
+                            </span>
                           </div>
                         </div>
 
