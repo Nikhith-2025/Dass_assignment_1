@@ -1,0 +1,397 @@
+.attendance-container {
+    min-height: 100vh;
+    background: #0a0a0a;
+    color: #eee;
+}
+
+.attendance-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: rgba(20, 20, 20, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.nav-back {
+    background: none;
+    border: none;
+    color: #d9683a;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 6px 12px;
+}
+
+.nav-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.export-btn {
+    background: rgba(217, 104, 58, 0.15);
+    color: #d9683a;
+    border: 1px solid rgba(217, 104, 58, 0.3);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.export-btn:hover {
+    background: rgba(217, 104, 58, 0.25);
+}
+
+.loading-text {
+    text-align: center;
+    color: #999;
+    padding: 60px 0;
+}
+
+/* Stats Bar */
+.stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 24px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.stat-card.scanned {
+    border-color: rgba(76, 175, 80, 0.3);
+    background: rgba(76, 175, 80, 0.06);
+}
+
+.stat-card.not-scanned {
+    border-color: rgba(255, 167, 38, 0.3);
+    background: rgba(255, 167, 38, 0.06);
+}
+
+.stat-card.percentage {
+    border-color: rgba(217, 104, 58, 0.3);
+    background: rgba(217, 104, 58, 0.06);
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.stat-card.scanned .stat-number {
+    color: #4caf50;
+}
+
+.stat-card.not-scanned .stat-number {
+    color: #ffa726;
+}
+
+.stat-card.percentage .stat-number {
+    color: #d9683a;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: #999;
+    font-weight: 500;
+}
+
+/* Tabs */
+.attendance-tabs {
+    display: flex;
+    gap: 4px;
+    padding: 0 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.att-tab {
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.att-tab.active {
+    color: #d9683a;
+    border-bottom-color: #d9683a;
+}
+
+.att-tab:hover {
+    color: #ccc;
+}
+
+/* Scanner Section */
+.scanner-section {
+    padding: 24px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.scanner-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.scan-btn {
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #d9683a, #c05030);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.scan-btn.stop {
+    background: linear-gradient(135deg, #ff5252, #d32f2f);
+}
+
+.scan-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(217, 104, 58, 0.3);
+}
+
+.file-upload-section {
+    text-align: center;
+}
+
+.file-upload-label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 13px;
+    color: #999;
+    cursor: pointer;
+}
+
+.file-upload-label input {
+    margin-top: 4px;
+}
+
+.qr-reader-box {
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+/* Scan Results */
+.scan-result {
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 16px;
+}
+
+.scan-result.success {
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.scan-result.warning {
+    background: rgba(255, 167, 38, 0.1);
+    border: 1px solid rgba(255, 167, 38, 0.3);
+}
+
+.scan-result.error {
+    background: rgba(244, 67, 54, 0.1);
+    border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+.result-icon {
+    font-size: 40px;
+    margin-bottom: 8px;
+    color: #4caf50;
+}
+
+.result-icon.duplicate {
+    color: #ffa726;
+}
+
+.result-icon.error {
+    color: #f44336;
+}
+
+.scan-result h3 {
+    margin: 0 0 8px;
+    color: #fff;
+}
+
+.scan-result p {
+    margin: 4px 0;
+    color: #ccc;
+    font-size: 14px;
+}
+
+.ticket-info {
+    font-family: monospace;
+    color: #999 !important;
+    font-size: 12px !important;
+}
+
+/* Participants List */
+.participants-list {
+    padding: 24px;
+}
+
+.participant-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    transition: background 0.2s;
+}
+
+.participant-row:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.participant-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.participant-info strong {
+    color: #fff;
+    font-size: 14px;
+}
+
+.participant-info span {
+    color: #999;
+    font-size: 12px;
+}
+
+.ticket-id {
+    font-family: monospace;
+    font-size: 11px !important;
+}
+
+.participant-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.badge.present {
+    background: rgba(76, 175, 80, 0.15);
+    color: #4caf50;
+}
+
+.badge.absent {
+    background: rgba(255, 167, 38, 0.15);
+    color: #ffa726;
+}
+
+.attended-time {
+    color: #888;
+    font-size: 12px;
+}
+
+.override-btn {
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ccc;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.override-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.override-form {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.override-form input {
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: #eee;
+    font-size: 12px;
+    width: 160px;
+}
+
+.override-confirm {
+    padding: 6px 10px;
+    background: #d9683a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.override-cancel {
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.06);
+    color: #999;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.empty-state {
+    text-align: center;
+    color: #888;
+    padding: 40px 0;
+    font-size: 15px;
+}
+
+@media (max-width: 768px) {
+    .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 16px;
+    }
+
+    .participant-row {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+}

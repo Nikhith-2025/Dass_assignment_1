@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=IBM+Plex+Mono:wght@400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'IBM Plex Mono', 'Courier Prime', monospace;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background: #0f0f0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.login-card {
+  width: 360px;
+  background: rgba(30, 30, 30, 0.8);
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 32px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.cas-btn {
+  width: 100%;
+  padding: 12px;
+  background: #d9683a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.cas-btn:hover {
+  background: #e07a52;
+}
+
+.divider {
+  margin: 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #aaa;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+label {
+  font-size: 14px;
+  color: #ccc;
+  font-weight: 600;
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 6px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  background: rgba(50, 50, 50, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #ffffff;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+}
+
+input::placeholder {
+  color: #666;
+}
+
+input:focus {
+  outline: none;
+  border-color: #e07a6a;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  background: #e07a6a;
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.login-btn:hover {
+  background: #d96a57;
+}
+
+.error-message {
+  color: #e07a6a;
+  font-size: 13px;
+  margin-top: 12px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.forgot {
+  text-align: center;
+  font-size: 11px;
+  color: #aaa;
+  margin-top: 20px;
+}
+
+.forgot span {
+  color: #e07a6a;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.forgot span:hover {
+  color: #e69a86;
+}
+
+.signup {
+  text-align: center;
+  font-size: 11px;
+  color: #aaa;
+  margin-top: 12px;
+}
+
+.signup span {
+  color: #e07a6a;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.signup span:hover {
+  color: #e69a86;
+}
+.register-organizer-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #d9683a 0%, #e07a52 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'IBM Plex Mono', 'Courier Prime', monospace;
+  box-shadow: 0 4px 12px rgba(217, 104, 58, 0.35);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.register-organizer-btn:hover {
+  background: linear-gradient(135deg, #e07a52 0%, #e18965 100%);
+  box-shadow: 0 6px 16px rgba(217, 104, 58, 0.5);
+  transform: translateY(-2px);
+}
+
+.register-organizer-btn:active {
+  transform: translateY(0);
+}
+
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 16px;
+  background: transparent;
+  color: #d9683a;
+  border: 2px solid #d9683a;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'IBM Plex Mono', 'Courier Prime', monospace;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.back-btn:hover {
+  background: #d9683a;
+  color: white;
+}
+
+.signup-card {
+  width: 400px;
+  background: rgba(30, 30, 30, 0.8);
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-top: 0;
+}
+
+.form-group input {
+  margin-bottom: 0;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  margin-top: 0;
+}
+
+.form-group input {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .login-card,
+  .signup-card {
+    width: 90%;
+    padding: 30px 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.other-logins {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.alt-login-btn {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  color: #aaa;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.alt-login-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border-color: #d9683a;
+}
+
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.password-input-wrapper input {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  margin-bottom: 0;
+  background: rgba(50, 50, 50, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #ffffff;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+}
+
+.password-input-wrapper input::placeholder {
+  color: #666;
+}
+
+.password-input-wrapper input:focus {
+  outline: none;
+  border-color: #e07a6a;
+}
+
+.toggle-password-btn {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.toggle-password-btn:hover {
+  color: #e07a6a;
+}
+
+.toggle-password-btn:focus {
+  outline: none;
+}
+
+.Participant-badge,
+.organizer-badge,
+.admin-badge {
+  text-align: center;
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
